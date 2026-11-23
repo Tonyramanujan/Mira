@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d1c">
+
+<title>Our Little Universe | Mira ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #f2b3ce;
+  --light: #fff0f5;
+  --muted: #d4c3d8;
+  --bg: #100d1c;
+  --card: #211a31;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--light);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .65;
+  background-image:
+    radial-gradient(2px 2px at 20% 20%, white, transparent),
+    radial-gradient(1px 1px at 70% 30%, white, transparent),
+    radial-gradient(2px 2px at 80% 80%, white, transparent),
+    radial-gradient(1px 1px at 35% 65%, white, transparent),
+    radial-gradient(2px 2px at 50% 45%, white, transparent);
+  background-size: 190px 190px;
+  animation: twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .3; }
+  to { opacity: .8; }
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 23px 22px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar span {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.progress {
+  height: 3px;
+  background: #382d43;
+  width: 100%;
+  max-width: 560px;
+  margin: 12px auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 10%;
+  background: var(--pink);
+  transition: width .4s ease;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 18px 35px;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  max-width: 510px;
+  min-height: 510px;
+  padding: 35px 25px;
+  border: 1px solid rgba(242,179,206,.22);
+  border-radius: 25px;
+  background: linear-gradient(
+    145deg,
+    rgba(47,35,62,.94),
+    rgba(24,19,37,.97)
+  );
+  box-shadow: 0 15px 50px rgba(0,0,0,.25);
+  text-align: center;
+  animation: enter .5s ease;
+}
+
+.page.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kicker {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--pink);
+  margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(38px, 9vw, 57px);
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: clamp(27px, 7vw, 35px);
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: var(--pink);
+  font-size: 22px;
+  margin: 13px 0;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--pink);
+}
+
+.content {
+  color: #e9dce9;
+  font-size: 14px;
+  line-height: 2;
+  max-width: 410px;
+  white-space: pre-line;
+}
+
+.big-emoji {
+  font-size: 68px;
+  margin: 15px 0 23px;
+}
+
+.small-emoji {
+  font-size: 39px;
+  margin: 15px;
+}
+
+.divider {
+  width: 65px;
+  height: 1px;
+  background: var(--pink);
+  margin: 23px auto;
+}
+
+.highlight {
+  color: var(--pink);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 15px 30px;
+}
+
+.nav-btn {
+  padding: 13px 22px;
+  border: 1px solid #a66d91;
+  border-radius: 40px;
+  color: white;
+  background: #36243e;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 13px;
+}
+
+.nav-btn.primary {
+  background: #bd6f99;
+  border-color: #e6a8c5;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  background: #d184aa;
+}
+
+.nav-btn:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding-bottom: 12px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64506a;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.active {
+  background: var(--pink);
+  transform: scale(1.5);
+}
+
+.food-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(242,179,206,.2);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 9px 0;
+  width: 100%;
+  max-width: 390px;
+}
+
+.food-card p {
+  font-size: 13px;
+  color: #e5d7e7;
+  line-height: 1.8;
+}
+
+.song-btn {
+  display: inline-block;
+  padding: 13px 20px;
+  margin-top: 14px;
+  background: #bd6f99;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.phone-reveal {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid var(--pink);
+  border-radius: 15px;
+  width: 100%;
+  animation: enter .5s ease;
+}
+
+.phone-reveal.show {
+  display: block;
+}
+
+.phone-reveal h3 {
+  font-size: 25px;
+  letter-spacing: 2px;
+  overflow-wrap: anywhere;
+}
+
+.ending {
+  color: var(--pink);
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  margin-top: 22px;
+}
+
+@media(max-width: 420px) {
+  .page {
+    padding: 30px 19px;
+    min-height: 490px;
+  }
+
+  .content {
+    font-size: 13px;
+  }
+
+  .nav-btn {
+    padding: 12px 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div id="app">
+
+  <header class="topbar">
+    <span>👽 YOUR ALIEN</span>
+    <span id="pageCount">01 / 10</span>
+  </header>
+
+  <div class="progress">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <main>
+
+    <!-- PAGE 1: COVER -->
+    <section class="page active">
+
+      <div class="kicker">A little surprise for someone special</div>
+
+      <div class="big-emoji">🌙</div>
+
+      <h1 class="script">Our Little Universe</h1>
+
+      <div class="divider"></div>
+
+      <h3>To My Earthling, Mira 🌍</h3>
+
+      <p class="content">
+        From a random conversation
+        to a collection of little memories...
+
+        I made something for you.
+
+        Not a grand surprise,
+        just a little piece of my heart.
+      </p>
+
+      <div class="ending">With love, Vaasu ❤️</div>
+
+    </section>
+
+
+    <!-- PAGE 2: BEGINNING -->
+    <section class="page">
+
+      <div class="kicker">Chapter 01</div>
+
+      <div class="big-emoji">🍾</div>
+
+      <h2>Where It All Began</h2>
+
+      <p class="content">
+        Who would have thought that
+        a random meeting on Bottled
+        would bring two strangers
+        into each other's little world?
+
+        From Bottled to Instagram...
+
+        From strangers to conversations...
+
+        From conversations to calls...
+
+        And slowly, without planning anything,
+        we started creating our own little memories.
+
+        Funny how life works, isn't it?
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="highlight">
+        Some beautiful things begin unexpectedly.
+      </p>
+
+    </section>
+
+
+    <!-- PAGE 3: OUR LITTLE NAMES -->
+    <section class="page">
+
+      <div class="kicker">Chapter 02</div>
+
+      <div class="big-emoji">👽 🌍</div>
+
+      <h2>My Alien & My Earthling</h2>
+
+      <p class="content">
+        You became my Earthling,
+        and I became your Alien.
+
+        Almost seven calls,
+        countless conversations,
+        little teasing moments,
+        smiles and blushing...
+
+        And yes, you know exactly
+        how to make me shy!
+
+        I don't know when it happened,
+        but I started looking forward
+        to talking with you.
+
+        Even the name Vaasu sounds
+        a little more special when you say it.
+      </p>
+
+      <div class="ending">Alien & Earthling ✨</div>
+
+    </section>
+
+
+    <!-- PAGE 4: FIVE DAYS -->
+    <section class="page">
+
+      <div class="kicker">Chapter 03</div>
+
+      <div class="big-emoji">📱❤️</div>
+
+      <h2>Those Five Days</h2>
+
+      <p class="content">
+        A few days ago, my phone broke
+        and suddenly our conversations stopped.
+
+        I didn't expect to miss those
+        little everyday moments so much.
+
+        And knowing that you felt sad
+        and missed me too...
+
+        That genuinely meant something to me.
+
+        Today, when we finally talked again,
+        hearing you and getting teased by you
+        made my day better.
+
+        I'm glad we're talking again, Mira.
+      </p>
+
+      <div class="highlight">
+        Sometimes, absence makes little things feel special.
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 5: MOON -->
+    <section class="page">
+
+      <div class="kicker">Chapter 04</div>
+
+      <div class="big-emoji">🌙</div>
+
+      <h2>My 2–3 AM Thoughts</h2>
+
+      <p class="content">
+        These past few nights,
+        sometimes around 2 or 3 AM,
+        I found myself looking at the moon.
+
+        The world was quiet,
+        everything was still...
+
+        But somehow, my thoughts
+        kept finding their way to you.
+
+        I don't know why the moon
+        reminded me of you.
+
+        Maybe because even from a distance,
+        some people can make a quiet night
+        feel a little warmer.
+
+        I wished I could share that moment
+        with you sometimes.
+      </p>
+
+      <div class="ending">Under the same moon 🌙</div>
+
+    </section>
+
+
+    <!-- PAGE 6: FAVOURITES -->
+    <section class="page">
+
+      <div class="kicker">Chapter 05</div>
+
+      <h2>Your Little Favourites 🌼</h2>
+
+      <div class="food-card">
+        <div class="small-emoji">🌼</div>
+        <h3>Daisies</h3>
+        <p>
+          Your favourite flowers.
+
+          Simple, beautiful and lovely.
+          Just a little reminder that
+          I remember the small things about you.
+        </p>
+      </div>
+
+      <div class="food-card">
+        <div class="small-emoji">🍫</div>
+        <h3>Dark Chocolate</h3>
+        <p>
+          A little sweetness for my Earthling.
+
+          One day, I'm bringing you
+          your favourite dark chocolates.
+        </p>
+      </div>
+
+      <div class="food-card">
+        <div class="small-emoji">🥘</div>
+        <h3>Pav Bhaji</h3>
+        <p>
+          Your favourite food!
+
+          I still remember saying
+          that I'll make Pav Bhaji for you.
+
+          One day, you'll have to taste it
+          and give your honest review.
+          No cheating! 😄
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 7: BEAUTY AND HUGS -->
+    <section class="page">
+
+      <div class="kicker">Chapter 06</div>
+
+      <div class="big-emoji">🫂</div>
+
+      <h2>A Hug For My Earthling</h2>
+
+      <p class="content">
+        You know how you always ask
+        your Alien for hugs?
+
+        If I could, I'd give you one
+        whenever you needed it.
+
+        And one more thing...
+
+        Please don't be so hard on yourself
+        about how you look.
+
+        You don't need to change anything
+        to deserve kindness or affection.
+
+        You're beautiful in your own way,
+        and I hope you see yourself
+        with a little more love.
+
+        Sending you the warmest hug.
+      </p>
+
+      <div class="ending">A thousand hugs 🫂❤️</div>
+
+    </section>
+
+
+    <!-- PAGE 8: SUPPORT -->
+    <section class="page">
+
+      <div class="kicker">Chapter 07</div>
+
+      <div class="big-emoji">❤️‍🩹</div>
+
+      <h2>On Your Low Days</h2>
+
+      <p class="content">
+        I know work can get tiring
+        and sometimes life feels heavy.
+
+        But you don't always have to
+        pretend that everything is okay.
+
+        You can share your thoughts,
+        complain about your day,
+        stay quiet or simply be yourself.
+
+        Don't think too much about
+        having to find the right words.
+
+        Whenever you feel like talking,
+        I'll be happy to listen.
+
+        I may not have answers to everything,
+        but I genuinely want to be there for you.
+
+        You don't have to face every
+        difficult moment feeling alone.
+      </p>
+
+      <div class="highlight">
+        You have a special place in my little world.
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 9: GO WITH FLOW -->
+    <section class="page">
+
+      <div class="kicker">Chapter 08</div>
+
+      <div class="big-emoji">✨♾️</div>
+
+      <h2>Let's Go With The Flow</h2>
+
+      <p class="content">
+        Mira...
+
+        I don't want us to question
+        every little thing or rush
+        to find answers for everything.
+
+        There is still a long way to go.
+
+        Let's keep knowing each other,
+        creating memories,
+        laughing, teasing,
+        understanding and growing.
+
+        Let's not put unnecessary pressure
+        on something that feels beautiful.
+
+        Let's trust the journey
+        and see where God and the universe
+        take us.
+
+        One little step at a time,
+        together, if life allows us.
+      </p>
+
+      <div class="ending">
+        No rush. Just us, enjoying the journey. ❤️
+      </div>
+
+    </section>
+
+
+    <!-- PAGE 10: SONG AND NUMBER -->
+    <section class="page">
+
+      <div class="kicker">One Last Surprise</div>
+
+      <div class="big-emoji">🎶</div>
+
+      <h2>A Song & A Little Invitation</h2>
+
+      <p class="content">
+        Two songs for this little moment.
+
+        Sun Ri Sakhi...
+        and your favourite Chashni.
+
+        I hope they make you smile.
+      </p>
+
+      <a class="song-btn"
+         href="https://www.youtube.com/results?search_query=Sun+Ri+Sakhi"
+         target="_blank"
+         rel="noopener">
+         🎵 Sun Ri Sakhi
+      </a>
+
+      <a class="song-btn"
+         href="https://www.youtube.com/results?search_query=Chashni+Bharat+song"
+         target="_blank"
+         rel="noopener">
+         ❤️ Chashni
+      </a>
+
+      <div class="divider"></div>
+
+      <p class="content">
+        We've talked on Bottled,
+        Instagram and calls.
+
+        Here's another way to reach your Alien.
+      </p>
+
+      <button class="nav-btn primary"
+              onclick="revealPhone()">
+        Open Your Last Surprise 💌
+      </button>
+
+      <div class="phone-reveal" id="phoneReveal">
+
+        <p class="highlight">Your Alien's number ❤️</p>
+
+        <h3>9951921998</h3>
+
+        <button class="nav-btn"
+                onclick="copyPhone()">
+          Copy Number 📋
+        </button>
+
+        <br>
+
+        <a class="song-btn"
+           href="https://wa.me/919951921998"
+           target="_blank"
+           rel="noopener">
+           Say Hello on WhatsApp 💬
+        </a>
+
+        <p class="content" style="margin-top:15px">
+          No pressure, Mira.
+          Just one more way to stay connected.
+        </p>
+
+      </div>
+
+      <div class="ending">
+        Your Alien, Vaasu 👽
+      </div>
+
+      <div class="small-emoji">🌙 🌼 ❤️</div>
+
+    </section>
+
+  </main>
+
+
+  <!-- PAGE DOTS -->
+  <div class="dots" id="dots"></div>
+
+
+  <!-- NAVIGATION -->
+  <nav class="navigation">
+
+    <button class="nav-btn"
+            id="prevBtn"
+            onclick="changePage(-1)">
+      ← Previous
+    </button>
+
+    <button class="nav-btn primary"
+            id="nextBtn"
+            onclick="changePage(1)">
+      Begin Our Story →
+    </button>
+
+  </nav>
+
+</div>
+
+
+<script>
+
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page");
+const totalPages = pages.length;
+
+const pageCount = document.getElementById("pageCount");
+const progressFill = document.getElementById("progressFill");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const dotsContainer = document.getElementById("dots");
+
+
+// CREATE PAGE DOTS
+
+for (let i = 0; i < totalPages; i++) {
+
+  const dot = document.createElement("button");
+
+  dot.className = "dot";
+
+  dot.setAttribute("aria-label", "Go to page " + (i + 1));
+
+  dot.onclick = function() {
+    goToPage(i);
+  };
+
+  dotsContainer.appendChild(dot);
+
+}
+
+
+// SHOW PAGE
+
+function showPage() {
+
+  pages.forEach((page, index) => {
+
+    page.classList.toggle(
+      "active",
+      index === currentPage
+    );
+
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  dots.forEach((dot, index) => {
+
+    dot.classList.toggle(
+      "active",
+      index === currentPage
+    );
+
+  });
+
+  pageCount.textContent =
+    String(currentPage + 1).padStart(2, "0")
+    + " / "
+    + String(totalPages).padStart(2, "0");
+
+  progressFill.style.width =
+    ((currentPage + 1) / totalPages * 100) + "%";
+
+  prevBtn.disabled = currentPage === 0;
+
+  if (currentPage === 0) {
+    nextBtn.textContent = "Begin Our Story →";
+  } else if (currentPage === totalPages - 1) {
+    nextBtn.textContent = "Our Little Journey ❤️";
+  } else {
+    nextBtn.textContent = "Next Page →";
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+// NEXT AND PREVIOUS
+
+function changePage(direction) {
+
+  const next = currentPage + direction;
+
+  if (next < 0 || next >= totalPages) {
+    return;
+  }
+
+  currentPage = next;
+
+  showPage();
+
+}
+
+
+// DIRECT PAGE NAVIGATION
+
+function goToPage(index) {
+
+  if (index < 0 || index >= totalPages) {
+    return;
+  }
+
+  currentPage = index;
+
+  showPage();
+
+}
+
+
+// PHONE NUMBER REVEAL
+
+function revealPhone() {
+
+  const phone =
+    document.getElementById("phoneReveal");
+
+  phone.classList.add("show");
+
+  phone.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+
+// COPY NUMBER
+
+function copyPhone() {
+
+  const number = "9951921998";
+
+  if (navigator.clipboard && window.isSecureContext) {
+
+    navigator.clipboard.writeText(number)
+      .then(() => {
+        alert("Your Alien's number is copied! ❤️");
+      })
+      .catch(() => {
+        alert("Please copy manually: " + number);
+      });
+
+  } else {
+
+    alert("Please copy manually: " + number);
+
+  }
+
+}
+
+
+// INITIALIZE
+
+showPage();
+
+</script>
+
+</body>
+  </html>
+  
