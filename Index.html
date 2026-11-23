@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100e20">
+<title>To My Earthling 🌍 | From Your Alien</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #100e20;
+  color: #fff0f4;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 85px 22px;
+  text-align: center;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: #ffc5d9;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  background:
+    radial-gradient(ellipse at 50% 40%,
+    #51406c 0%, #211b38 45%, #100e20 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 20%, white, transparent),
+    radial-gradient(1px 1px at 40% 70%, white, transparent),
+    radial-gradient(2px 2px at 85% 65%, white, transparent),
+    radial-gradient(1px 1px at 15% 80%, white, transparent);
+  background-size: 180px 180px;
+  animation: sparkle 5s infinite alternate;
+}
+
+@keyframes sparkle {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
+.moon {
+  font-size: 70px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 25px #fff3bd);
+}
+
+.hero h1 {
+  font-size: clamp(42px, 9vw, 72px);
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #f2dce9;
+}
+
+.hero p {
+  max-width: 340px;
+  line-height: 1.9;
+  margin-top: 28px;
+  color: #e5d9ec;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 27px;
+  border-radius: 40px;
+  border: 1px solid #f7b6d0;
+  color: white;
+  background: #d46b9b;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: #ed8cb5;
+}
+
+.eyebrow {
+  color: #efa4c3;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-bottom: 17px;
+}
+
+.heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.story {
+  background: #171329;
+}
+
+.story-card {
+  max-width: 490px;
+  margin: 17px auto;
+  padding: 25px;
+  border: 1px solid #59405d;
+  border-radius: 18px;
+  background: #211b35;
+  text-align: left;
+}
+
+.story-card h3 {
+  color: #ffc0d6;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.story-card p {
+  line-height: 1.9;
+  color: #e9deeb;
+  font-size: 14px;
+}
+
+.quote {
+  background: linear-gradient(145deg, #332444, #171329);
+}
+
+.quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.9;
+  max-width: 490px;
+  margin: auto;
+  color: #f7dce9;
+}
+
+.moon-section {
+  background: linear-gradient(#15142a, #25203c);
+}
+
+.big-moon {
+  font-size: 75px;
+  margin-bottom: 25px;
+}
+
+.moon-section p {
+  max-width: 490px;
+  margin: auto;
+  line-height: 2;
+  color: #e6dce9;
+}
+
+.food {
+  background: #191426;
+}
+
+.food-card {
+  max-width: 440px;
+  margin: 15px auto;
+  background: #292039;
+  border-radius: 18px;
+  padding: 26px;
+  line-height: 1.9;
+}
+
+.food-card .emoji {
+  font-size: 48px;
+}
+
+.food-card h3 {
+  color: #ffc2d7;
+  font-family: 'Playfair Display', serif;
+  margin: 12px;
+  font-weight: 400;
+}
+
+.hugs {
+  background: linear-gradient(145deg, #41263e, #171329);
+}
+
+.hugs .big {
+  font-size: 75px;
+  margin: 20px;
+}
+
+.hugs p {
+  max-width: 440px;
+  margin: auto;
+  line-height: 2;
+  color: #f3e5ed;
+}
+
+.promise {
+  background: #171329;
+}
+
+.promise p {
+  max-width: 480px;
+  margin: auto;
+  line-height: 2;
+  color: #e8ddea;
+}
+
+.song {
+  background: linear-gradient(135deg, #33213f, #171329);
+}
+
+.song-box {
+  border: 1px solid #b57c9d;
+  border-radius: 20px;
+  max-width: 430px;
+  padding: 30px 20px;
+  margin: 18px auto;
+  background: #241a34;
+}
+
+.song-box .music {
+  font-size: 48px;
+}
+
+.song-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 15px;
+  color: #ffc1d9;
+}
+
+.song-box p {
+  color: #e9dce9;
+  line-height: 1.8;
+}
+
+.number-section {
+  background: radial-gradient(ellipse, #44304d, #100e20);
+}
+
+.number-card {
+  max-width: 450px;
+  padding: 35px 22px;
+  margin: auto;
+  border: 1px solid #e69abc;
+  border-radius: 22px;
+  background: rgba(255,255,255,.05);
+}
+
+.number-card p {
+  line-height: 1.9;
+  color: #e9dce9;
+}
+
+.number {
+  display: none;
+  font-size: 23px;
+  color: #ffc0d8;
+  margin-top: 25px;
+  overflow-wrap: anywhere;
+}
+
+.number.show {
+  display: block;
+  animation: appear .8s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.number h3 {
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+footer {
+  padding: 50px 20px;
+  text-align: center;
+  background: #0d0b18;
+}
+
+footer p {
+  color: #c8b8cc;
+  font-size: 13px;
+  line-height: 2;
+}
+
+footer .script {
+  font-size: 38px;
+  margin: 15px;
+}
+
+.heart {
+  color: #ff8db7;
+}
+
+.song-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-note {
+  color: #bfaec5;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+@media(max-width: 480px) {
+  section {
+    padding: 70px 18px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .quote p {
+    font-size: 19px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<section class="hero" id="home">
+
+  <div class="stars"></div>
+
+  <div class="moon">🌙</div>
+
+  <div class="eyebrow">
+    A little surprise for someone special
+  </div>
+
+  <h1 class="script">To My Earthling</h1>
+
+  <h2>FROM YOUR ALIEN 👽</h2>
+
+  <p>
+    Some people enter our lives unexpectedly...
+    and slowly become a beautiful part of our
+    everyday thoughts.
+  </p>
+
+  <a href="#begin" class="btn">
+    Enter Our Little Universe ✨
+  </a>
+
+</section>
+
+
+<!-- OUR STORY -->
+<section class="story" id="begin">
+
+  <div class="eyebrow">Chapter One</div>
+
+  <h2 class="heading">How It All Started ❤️</h2>
+
+  <div class="story-card">
+
+    <h3>👽 An Alien Meets His Earthling</h3>
+
+    <p>
+      Who knew that a simple meeting on Bottled
+      would turn into something this beautiful?
+
+      We started as two strangers, exchanged Instagram,
+      and slowly started knowing each other.
+
+      I never imagined that a random meeting
+      could turn into so many little memories.
+    </p>
+
+  </div>
+
+  <div class="story-card">
+
+    <h3>📞 Seven Little Calls</h3>
+
+    <p>
+      Almost seven calls, countless little conversations,
+      teasing, smiling and those moments when neither
+      of us wanted the conversation to end.
+
+      Somehow, talking to you started feeling special.
+
+      Sometimes I wish those calls had a pause button.
+    </p>
+
+  </div>
+
+  <div class="story-card">
+
+    <h3>🌍 Alien & Earthling</h3>
+
+    <p>
+      You became my Earthling, and I became your Alien.
+
+      It's such a silly little name, but now it carries
+      some of my favourite memories.
+
+      Maybe we belong to different worlds,
+      but I like the little universe we created
+      through our conversations.
+    </p>
+
+  </div>
+
+  <div class="story-card">
+
+    <h3>😊 That Blushing Moment</h3>
+
+    <p>
+      You teasing me, noticing my shyness,
+      and knowing when I blush...
+
+      I don't know how you do that,
+      but you make even my silent reactions special.
+
+      And yes, I know you enjoy teasing your Alien! 😄
+    </p>
+
+  </div>
+
+  <div class="story-card">
+
+    <h3>📱 Five Days of Missing You</h3>
+
+    <p>
+      When my phone stopped working,
+      our conversations suddenly paused.
+
+      I didn't expect those little conversations
+      to be missed this much.
+
+      And knowing that you missed me too
+      made me smile in a way I can't explain.
+
+      I'm glad we're talking again. ❤️
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- FEELINGS -->
+<section class="quote">
+
+  <div class="eyebrow">Something From My Heart</div>
+
+  <p>
+    "I didn't plan to make you a part of my days.
+
+    It just happened...
+
+    Somewhere between our conversations,
+    your teasing, your smile and your little moments,
+    you became someone I genuinely look forward to.
+
+    And honestly, I'm happy that our paths crossed."
+  </p>
+
+  <br>
+
+  <span class="heart">❤️ ✨</span>
+
+</section>
+
+
+<!-- MOON -->
+<section class="moon-section">
+
+  <div class="big-moon">🌙</div>
+
+  <div class="eyebrow">My 2–3 AM Thoughts</div>
+
+  <h2 class="heading">The Moon Reminds Me of You</h2>
+
+  <p>
+
+    There were a few nights when I couldn't sleep.
+
+    Around 2 or 3 AM, I would look at the moon.
+
+    And somehow, the quiet moonlit sky reminded me of you.
+
+    I don't know why...
+
+    Maybe because even when you are not around,
+    some thoughts of you find their way into my nights.
+
+    Sometimes I wished you were there,
+    just to share that little silence with me.
+
+    No big conversations,
+    no special plans...
+
+    Just you, me and that beautiful moon.
+
+    <br><br>
+
+    Maybe that's one of the little things
+    I wanted to tell you. 🌙❤️
+
+  </p>
+
+</section>
+
+
+<!-- HER FAVOURITES -->
+<section class="food">
+
+  <div class="eyebrow">A Few Things I Know About You</div>
+
+  <h2 class="heading">Your Little Favourites 🥰</h2>
+
+  <div class="food-card">
+
+    <div class="emoji">🥘</div>
+
+    <h3>Our Pav Bhaji Plan</h3>
+
+    <p>
+      I know how much you love Pav Bhaji
+      and outside food.
+
+      One day, I want to make Pav Bhaji for you.
+
+      No restaurant competition, okay?
+
+      At least let me try!
+
+      And you have to give an honest review.
+      No extra marks just because your Alien made it! 😄
+    </p>
+
+  </div>
+
+  <div class="food-card">
+
+    <div class="emoji">🎵</div>
+
+    <h3>Chashni ❤️</h3>
+
+    <p>
+      Your favourite song from Bharat.
+
+      Now whenever I hear the name Chashni,
+      I get reminded of one particular Earthling.
+
+      Funny how a song can become connected
+      to someone without even trying.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- HUGS -->
+<section class="hugs">
+
+  <div class="eyebrow">A Special Section</div>
+
+  <h2 class="heading">Unlimited Hugs For You 🫂</h2>
+
+  <div class="big">🫂</div>
+
+  <p>
+
+    I know you ask for hugs quite often.
+
+    If I could, I would give you one whenever
+    you needed it.
+
+    The kind of hug where you don't have to explain
+    anything, don't have to pretend to be happy,
+    and don't have to find the right words.
+
+    Just a little warmth, a little comfort,
+    and a reminder that you matter.
+
+    <br><br>
+
+    And until I can give you one in person,
+    consider this a little collection
+    of virtual hugs from your Alien.
+
+    One hug for your happy days,
+    one for your tired days,
+    and unlimited ones for the days
+    when you need a little extra warmth.
+
+    🫂❤️
+
+  </p>
+
+</section>
+
+
+<!-- PROMISE -->
+<section class="promise">
+
+  <div class="eyebrow">One Thing I Want You To Know</div>
+
+  <h2 class="heading">On Your Low Days ❤️‍🩹</h2>
+
+  <p>
+
+    I know there are days when work gets tiring,
+    when things feel heavy, and when you don't
+    feel like yourself.
+
+    You don't always have to be cheerful around me.
+
+    You can talk, complain, stay quiet,
+    or simply be yourself.
+
+    You don't have to hide your low days
+    or pretend everything is okay.
+
+    <br><br>
+
+    I may not have a solution to everything,
+    but I would love to listen and be there for you.
+
+    I don't want you to feel that you have to face
+    every difficult moment alone.
+
+    <br><br>
+
+    I can't promise that every day will be perfect,
+    but I can promise to be honest with you,
+    to listen, to understand and to make an effort.
+
+    And I hope we keep choosing to understand
+    each other, even on the not-so-perfect days.
+
+    ❤️
+
+  </p>
+
+</section>
+
+
+<!-- SONGS -->
+<section class="song">
+
+  <div class="eyebrow">Two Songs, A Little Feeling</div>
+
+  <h2 class="heading">A Musical Surprise 🎶</h2>
+
+  <div class="song-box">
+
+    <div class="music">🎧</div>
+
+    <h3>Sun Ri Sakhi</h3>
+
+    <p>
+      A little melody for this moment.
+
+      Some songs say things that words sometimes cannot.
+    </p>
+
+    <div class="song-links">
+
+      <a
+        class="btn"
+        href="https://www.youtube.com/results?search_query=Sun+Ri+Sakhi"
+        target="_blank"
+        rel="noopener noreferrer">
+        Listen to Sun Ri Sakhi 🎵
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="song-box">
+
+    <div class="music">❤️</div>
+
+    <h3>Chashni</h3>
+
+    <p>
+      Your favourite song.
+
+      I couldn't leave this one out,
+      because I know it makes you happy.
+    </p>
+
+    <div class="song-links">
+
+      <a
+        class="btn"
+        href="https://www.youtube.com/results?search_query=Chashni+Bharat+song"
+        target="_blank"
+        rel="noopener noreferrer">
+        Listen to Chashni 🌷
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NUMBER SURPRISE -->
+<section class="number-section">
+
+  <div class="eyebrow">One Last Little Surprise</div>
+
+  <h2 class="heading">A Little Closer, Maybe? ❤️</h2>
+
+  <div class="number-card">
+
+    <p>
+
+      We've talked on Instagram,
+      shared calls, stories, songs and little memories.
+
+      From a random Bottled conversation
+      to becoming a little part of each other's days...
+
+      I guess some connections don't need
+      a perfect beginning.
+
+      They just need two people
+      willing to know each other.
+
+      <br><br>
+
+      But here's one more way to reach your Alien.
+
+      Whenever you feel like talking,
+      whenever you want to share something,
+      or whenever you just want to say hello...
+
+      Here's my little invitation.
+
+    </p>
+
+    <p style="margin-top:25px">
+
+      <span class="script" style="font-size:34px">
+        Your Alien's number
+      </span>
+
+    </p>
+
+    <button class="btn" onclick="revealNumber()">
+      Reveal My Number 💌
+    </button>
+
+    <div class="number" id="phoneNumber">
+
+      <p>📱 Call or text me here:</p>
+
+      <h3 id="phoneText">9951921998</h3>
+
+      <a
+        class="btn"
+        href="tel:+919951921998">
+        Call Your Alien 📞
+      </a>
+
+      <br>
+
+      <a
+        class="btn"
+        href="https://wa.me/919951921998"
+        target="_blank"
+        rel="noopener noreferrer">
+        Say Hello on WhatsApp 💬
+      </a>
+
+      <br>
+
+      <button class="btn" onclick="copyNumber()">
+        Copy Number 📋
+      </button>
+
+      <p class="small-note">
+        No pressure. Just another way to stay connected. ❤️
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ENDING -->
+<footer>
+
+  <div class="script">
+    Until our next conversation...
+  </div>
+
+  <p>
+    From the Alien who sometimes blushes
+    because of his Earthling. 👽
+  </p>
+
+  <div style="font-size:30px;margin:22px">
+    🌙 ❤️ 🌍
+  </div>
+
+  <p>
+    Three months of little conversations,
+    unexpected smiles, songs, teasing
+    and memories worth keeping.
+  </p>
+
+  <div class="script" style="margin-top:28px">
+    Your Alien, Vaasu 👽
+  </div>
+
+  <p>
+    Made with a little imagination,
+    many memories and genuine affection.
+  </p>
+
+  <p style="margin-top:22px">
+    <span class="heart">
+      Not just a webpage,
+    </span>
+    <br>
+    just a little piece of my heart. ❤️
+  </p>
+
+</footer>
+
+
+<script>
+
+const MY_NUMBER = "9951921998";
+
+function revealNumber() {
+
+  const numberSection =
+    document.getElementById("phoneNumber");
+
+  numberSection.classList.add("show");
+
+  document.getElementById("phoneText")
+    .textContent = MY_NUMBER;
+
+  numberSection.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+function copyNumber() {
+
+  if (navigator.clipboard && window.isSecureContext) {
+
+    navigator.clipboard.writeText(MY_NUMBER)
+      .then(() => {
+        alert("Your Alien's number is copied! ❤️");
+      })
+      .catch(() => {
+        alert("Please copy manually: " + MY_NUMBER);
+      });
+
+  } else {
+
+    alert("Please copy manually: " + MY_NUMBER);
+
+  }
+
+}
+
+</script>
+
+</body>
+  </html>
+  
