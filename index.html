@@ -4,11 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100d1c">
+<meta name="theme-color" content="#171126">
+<title>A Gift From Krishna | The Story of Vaasu</title>
 
-<title>Our Little Universe | Mira ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -18,38 +17,50 @@
 }
 
 :root {
-  --pink: #f2b3ce;
-  --light: #fff0f5;
-  --muted: #d4c3d8;
-  --bg: #100d1c;
-  --card: #211a31;
+  --gold: #e9c77c;
+  --cream: #fff4dc;
+  --soft: #e9d9c2;
+  --bg: #171126;
+  --purple: #332044;
 }
 
 body {
   min-height: 100vh;
   background: var(--bg);
-  color: var(--light);
+  color: var(--cream);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
 
-button {
-  font-family: inherit;
+button { font-family: inherit; }
+
+#app {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
-#stars {
+.background {
   position: fixed;
   inset: 0;
-  pointer-events: none;
   z-index: 0;
-  opacity: .65;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 25%,
+      #51406a 0%, #251b39 45%, #110d1c 100%);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  opacity: .7;
   background-image:
-    radial-gradient(2px 2px at 20% 20%, white, transparent),
-    radial-gradient(1px 1px at 70% 30%, white, transparent),
-    radial-gradient(2px 2px at 80% 80%, white, transparent),
-    radial-gradient(1px 1px at 35% 65%, white, transparent),
-    radial-gradient(2px 2px at 50% 45%, white, transparent);
-  background-size: 190px 190px;
+    radial-gradient(2px 2px at 15% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 75% 15%, #ffe6a7, transparent),
+    radial-gradient(1px 1px at 50% 40%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 25% 85%, #ffe6a7, transparent);
+  background-size: 180px 180px;
   animation: twinkle 5s infinite alternate;
 }
 
@@ -58,84 +69,45 @@ button {
   to { opacity: .8; }
 }
 
-#app {
-  position: relative;
+.decor {
+  position: fixed;
   z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  pointer-events: none;
+  font-size: 37px;
+  opacity: .45;
+  filter: drop-shadow(0 0 8px #e9c77c);
 }
 
-.topbar {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 23px 22px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.topbar span {
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 2px;
-}
-
-.progress {
-  height: 3px;
-  background: #382d43;
-  width: 100%;
-  max-width: 560px;
-  margin: 12px auto;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 10%;
-  background: var(--pink);
-  transition: width .4s ease;
-}
+.decor.left { left: 5px; top: 20%; }
+.decor.right { right: 5px; top: 55%; }
+.decor.bottom { left: 8px; bottom: 8%; }
+.decor.topright { right: 8px; top: 8%; }
 
 main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  margin: auto;
   padding: 20px 18px 35px;
 }
 
-.page {
+.screen {
   display: none;
-  width: 100%;
-  max-width: 510px;
-  min-height: 510px;
-  padding: 35px 25px;
-  border: 1px solid rgba(242,179,206,.22);
-  border-radius: 25px;
-  background: linear-gradient(
-    145deg,
-    rgba(47,35,62,.94),
-    rgba(24,19,37,.97)
-  );
-  box-shadow: 0 15px 50px rgba(0,0,0,.25);
+  min-height: 88vh;
   text-align: center;
-  animation: enter .5s ease;
-}
-
-.page.active {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px 20px;
+  animation: appear .6s ease;
 }
 
-@keyframes enter {
+.screen.active { display: flex; }
+
+@keyframes appear {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -144,11 +116,18 @@ main {
 }
 
 .kicker {
+  color: var(--gold);
   font-size: 10px;
-  text-transform: uppercase;
   letter-spacing: 4px;
-  color: var(--pink);
+  text-transform: uppercase;
   margin-bottom: 20px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--gold);
+  font-size: clamp(38px, 9vw, 58px);
+  line-height: 1.35;
 }
 
 h1, h2, h3 {
@@ -157,181 +136,210 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: clamp(38px, 9vw, 57px);
-  line-height: 1.3;
+  font-size: clamp(29px, 7vw, 43px);
+  line-height: 1.4;
 }
 
 h2 {
-  font-size: clamp(27px, 7vw, 35px);
-  line-height: 1.4;
-  margin-bottom: 20px;
+  font-size: clamp(26px, 7vw, 34px);
+  color: var(--gold);
+  line-height: 1.45;
+  margin-bottom: 22px;
 }
 
 h3 {
-  color: var(--pink);
-  font-size: 22px;
-  margin: 13px 0;
-}
-
-.script {
-  font-family: 'Great Vibes', cursive;
-  color: var(--pink);
+  color: var(--gold);
+  font-size: 21px;
+  margin: 15px 0;
 }
 
 .content {
-  color: #e9dce9;
+  max-width: 470px;
+  color: var(--soft);
   font-size: 14px;
-  line-height: 2;
-  max-width: 410px;
+  line-height: 2.05;
   white-space: pre-line;
 }
 
-.big-emoji {
-  font-size: 68px;
-  margin: 15px 0 23px;
-}
-
-.small-emoji {
-  font-size: 39px;
-  margin: 15px;
-}
-
-.divider {
+.gold-line {
   width: 65px;
   height: 1px;
-  background: var(--pink);
-  margin: 23px auto;
+  background: var(--gold);
+  margin: 22px auto;
 }
 
-.highlight {
-  color: var(--pink);
+.flute {
+  font-size: 55px;
+  margin: 12px 0;
+  filter: drop-shadow(0 0 15px #d9ad54);
+}
+
+.peacock {
+  font-size: 55px;
+  margin: 12px;
+  filter: drop-shadow(0 0 12px #5a9d9c);
+}
+
+.krishna-gate {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  max-width: 450px;
+  width: 100%;
+  margin: 27px auto;
+}
+
+.krishna-choice {
+  border: 1px solid rgba(233,199,124,.4);
+  background: rgba(255,255,255,.06);
+  border-radius: 18px;
+  padding: 13px 5px;
+  color: var(--cream);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.krishna-choice:hover {
+  transform: translateY(-6px);
+  background: rgba(233,199,124,.15);
+  border-color: var(--gold);
+}
+
+.krishna-choice svg {
+  width: 100%;
+  max-width: 95px;
+  height: 115px;
+  display: block;
+  margin: auto;
+}
+
+.krishna-choice span {
+  display: block;
+  font-size: 10px;
+  color: var(--gold);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.gate-hint {
+  font-size: 12px;
+  color: #d6c5a9;
+  line-height: 1.8;
+}
+
+.story-card {
+  width: 100%;
+  max-width: 490px;
+  border: 1px solid rgba(233,199,124,.3);
+  background: rgba(255,255,255,.045);
+  border-radius: 22px;
+  padding: 29px 21px;
+  box-shadow: 0 15px 45px rgba(0,0,0,.2);
+}
+
+.story-emoji {
+  font-size: 56px;
+  margin-bottom: 18px;
+}
+
+.quote {
+  color: #f4dba8;
   font-family: 'Playfair Display', serif;
   font-style: italic;
+  font-size: 18px;
+  line-height: 1.9;
+  max-width: 460px;
+  margin: 20px auto;
 }
 
-.navigation {
+.scene-number {
+  color: var(--gold);
+  letter-spacing: 3px;
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+
+.nav {
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 13px;
-  padding: 15px 15px 30px;
+  padding: 12px 10px 30px;
 }
 
-.nav-btn {
+.nav button, .main-btn {
+  border: 1px solid var(--gold);
+  border-radius: 35px;
   padding: 13px 22px;
-  border: 1px solid #a66d91;
-  border-radius: 40px;
-  color: white;
-  background: #36243e;
+  color: var(--cream);
+  background: #4b3151;
   cursor: pointer;
-  transition: .3s;
   font-size: 13px;
+  transition: .3s;
 }
 
-.nav-btn.primary {
-  background: #bd6f99;
-  border-color: #e6a8c5;
+.nav button.primary, .main-btn {
+  background: #987047;
+  border-color: #f1d49a;
 }
 
-.nav-btn:hover {
+.nav button:hover, .main-btn:hover {
+  background: #b18a53;
   transform: translateY(-2px);
-  background: #d184aa;
 }
 
-.nav-btn:disabled {
-  opacity: .3;
+.nav button:disabled {
+  opacity: .25;
   cursor: not-allowed;
   transform: none;
 }
 
-.dots {
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-  padding-bottom: 12px;
+.progress {
+  width: 85%;
+  max-width: 450px;
+  height: 3px;
+  background: #4c4057;
+  border-radius: 10px;
+  margin: 5px auto 20px;
+  overflow: hidden;
 }
 
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #64506a;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+  transition: width .4s;
 }
 
-.dot.active {
-  background: var(--pink);
-  transform: scale(1.5);
-}
-
-.food-card {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(242,179,206,.2);
-  border-radius: 16px;
-  padding: 18px;
-  margin: 9px 0;
-  width: 100%;
-  max-width: 390px;
-}
-
-.food-card p {
-  font-size: 13px;
-  color: #e5d7e7;
-  line-height: 1.8;
-}
-
-.song-btn {
-  display: inline-block;
-  padding: 13px 20px;
-  margin-top: 14px;
-  background: #bd6f99;
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.phone-reveal {
-  display: none;
-  margin-top: 25px;
-  padding: 20px;
-  border: 1px solid var(--pink);
-  border-radius: 15px;
-  width: 100%;
-  animation: enter .5s ease;
-}
-
-.phone-reveal.show {
-  display: block;
-}
-
-.phone-reveal h3 {
-  font-size: 25px;
+.counter {
+  color: #c9b99d;
+  font-size: 11px;
   letter-spacing: 2px;
-  overflow-wrap: anywhere;
+  margin-bottom: 8px;
 }
 
-.ending {
-  color: var(--pink);
+.end-title {
   font-family: 'Great Vibes', cursive;
-  font-size: 36px;
-  margin-top: 22px;
+  font-size: 49px;
+  color: var(--gold);
+  margin: 20px 0;
 }
 
-@media(max-width: 420px) {
-  .page {
-    padding: 30px 19px;
-    min-height: 490px;
-  }
+@media(max-width:400px) {
+  main { padding: 10px 12px; }
+  .screen { padding: 25px 10px; }
+  .content { font-size: 13px; }
+  .krishna-choice { padding: 9px 3px; }
+  .krishna-choice svg { height: 90px; }
+  .nav button { padding: 12px 16px; }
+}
 
-  .content {
-    font-size: 13px;
-  }
-
-  .nav-btn {
-    padding: 12px 17px;
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -339,537 +347,622 @@ h3 {
 
 <body>
 
-<div id="stars"></div>
-
 <div id="app">
 
-  <header class="topbar">
-    <span>👽 YOUR ALIEN</span>
-    <span id="pageCount">01 / 10</span>
-  </header>
+<div class="background">
+  <div class="stars"></div>
+</div>
 
-  <div class="progress">
-    <div class="progress-fill" id="progressFill"></div>
+<div class="decor left">🦚</div>
+<div class="decor right">🪈</div>
+<div class="decor bottom">🌸</div>
+<div class="decor topright">🦚</div>
+
+<main>
+
+<!-- SCREEN 1: OPENING -->
+
+<section class="screen active" id="screen0">
+
+  <div class="kicker">A story of faith and blessings</div>
+
+  <div class="peacock">🦚</div>
+
+  <h1 class="script">A Gift From Krishna</h1>
+
+  <div class="flute">🪈</div>
+
+  <h2 style="font-size:23px">
+    The Story of Vaasu
+  </h2>
+
+  <div class="gold-line"></div>
+
+  <p class="content">
+    Every birth has a story.
+
+    Some begin with a dream,
+    some with a prayer,
+    and some with the blessings of God.
+
+    This is the story of a mother's faith,
+    her beautiful journey,
+    and a little boy named Vaasu.
+  </p>
+
+  <h3>Before the story begins...</h3>
+
+  <p class="gate-hint">
+    Three little Krishnas are waiting for you.
+
+    Choose any one to open the story.
+  </p>
+
+  <div class="krishna-gate">
+
+    <!-- KRISHNA ONE -->
+    <button class="krishna-choice" onclick="beginStory()">
+      <svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
+        <path d="M48 27 Q20 2 40 4 Q61 1 54 28"
+              fill="#3d9d8b" stroke="#e4c078" stroke-width="2"/>
+        <ellipse cx="44" cy="13" rx="6" ry="9" fill="#2763a3"/>
+        <ellipse cx="44" cy="13" rx="2.5" ry="5" fill="#eacb6c"/>
+        <path d="M27 40 Q50 12 73 40 L68 53 L32 53Z"
+              fill="#e7bd62" stroke="#a67932" stroke-width="2"/>
+        <circle cx="50" cy="62" r="24" fill="#80b9df"/>
+        <path d="M26 56 Q20 29 50 31 Q80 29 74 56"
+              fill="#24213b"/>
+        <circle cx="42" cy="62" r="2.5" fill="#30213b"/>
+        <circle cx="58" cy="62" r="2.5" fill="#30213b"/>
+        <path d="M45 73 Q50 78 55 73"
+              stroke="#813d4e" fill="none" stroke-width="2"/>
+        <path d="M47 45 L53 45 L50 54Z" fill="#fff4d4"/>
+        <path d="M30 89 Q50 76 70 89 L79 120 L21 120Z"
+              fill="#e5b85e"/>
+        <path d="M17 91 L83 91"
+              stroke="#a76b32" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="38" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="48" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="58" cy="91" r="1.5" fill="#fff4d4"/>
+      </svg>
+      <span>Little Krishna I</span>
+    </button>
+
+    <!-- KRISHNA TWO -->
+    <button class="krishna-choice" onclick="beginStory()">
+      <svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
+        <path d="M49 27 Q19 5 37 3 Q64 1 55 29"
+              fill="#46a48a" stroke="#e4c078" stroke-width="2"/>
+        <ellipse cx="44" cy="13" rx="6" ry="9" fill="#365d9d"/>
+        <ellipse cx="44" cy="13" rx="2.5" ry="5" fill="#edcf71"/>
+        <path d="M27 40 Q50 12 73 40 L68 53 L32 53Z"
+              fill="#edc968" stroke="#b48a42" stroke-width="2"/>
+        <circle cx="50" cy="62" r="24" fill="#70aeda"/>
+        <path d="M26 56 Q20 29 50 31 Q80 29 74 56"
+              fill="#25203a"/>
+        <circle cx="42" cy="62" r="2.5" fill="#30213b"/>
+        <circle cx="58" cy="62" r="2.5" fill="#30213b"/>
+        <path d="M45 73 Q50 78 55 73"
+              stroke="#813d4e" fill="none" stroke-width="2"/>
+        <path d="M47 45 L53 45 L50 54Z" fill="#fff4d4"/>
+        <path d="M30 89 Q50 76 70 89 L79 120 L21 120Z"
+              fill="#e5bd68"/>
+        <path d="M17 91 L83 91"
+              stroke="#aa7138" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="38" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="48" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="58" cy="91" r="1.5" fill="#fff4d4"/>
+      </svg>
+      <span>Little Krishna II</span>
+    </button>
+
+    <!-- KRISHNA THREE -->
+    <button class="krishna-choice" onclick="beginStory()">
+      <svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
+        <path d="M49 27 Q18 5 37 3 Q64 1 55 29"
+              fill="#45a48a" stroke="#e4c078" stroke-width="2"/>
+        <ellipse cx="44" cy="13" rx="6" ry="9" fill="#365d9d"/>
+        <ellipse cx="44" cy="13" rx="2.5" ry="5" fill="#edcf71"/>
+        <path d="M27 40 Q50 12 73 40 L68 53 L32 53Z"
+              fill="#e6bb63" stroke="#b48a42" stroke-width="2"/>
+        <circle cx="50" cy="62" r="24" fill="#86b8d7"/>
+        <path d="M26 56 Q20 29 50 31 Q80 29 74 56"
+              fill="#24203a"/>
+        <circle cx="42" cy="62" r="2.5" fill="#30213b"/>
+        <circle cx="58" cy="62" r="2.5" fill="#30213b"/>
+        <path d="M45 73 Q50 78 55 73"
+              stroke="#813d4e" fill="none" stroke-width="2"/>
+        <path d="M47 45 L53 45 L50 54Z" fill="#fff4d4"/>
+        <path d="M30 89 Q50 76 70 89 L79 120 L21 120Z"
+              fill="#e5b85e"/>
+        <path d="M17 91 L83 91"
+              stroke="#aa7138" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="38" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="48" cy="91" r="1.5" fill="#fff4d4"/>
+        <circle cx="58" cy="91" r="1.5" fill="#fff4d4"/>
+      </svg>
+      <span>Little Krishna III</span>
+    </button>
+
   </div>
 
-  <main>
+  <p class="gate-hint">
+    🦚 May Krishna's blessings guide this little journey.
+  </p>
 
-    <!-- PAGE 1: COVER -->
-    <section class="page active">
+</section>
 
-      <div class="kicker">A little surprise for someone special</div>
 
-      <div class="big-emoji">🌙</div>
+<!-- SCREEN 2: VILLAGE GIRL -->
 
-      <h1 class="script">Our Little Universe</h1>
+<section class="screen">
+  <div class="scene-number">CHAPTER 01 · THE BEGINNING</div>
+  <div class="story-card">
+    <div class="story-emoji">🌾🐄</div>
+    <h2>A Little Girl From A Beautiful Village</h2>
+    <p class="content">
+      Do you know what happened on this day,
+      many years ago?
 
-      <div class="divider"></div>
+      Once upon a time, there lived a very innocent girl
+      in a beautiful village surrounded by greenery.
 
-      <h3>To My Earthling, Mira 🌍</h3>
+      She knew very little about the materialistic
+      and luxurious world.
 
-      <p class="content">
-        From a random conversation
-        to a collection of little memories...
+      Her little universe was her family,
+      her sisters and brothers,
+      the green agricultural fields,
+      and the cows that filled her days with happiness.
 
-        I made something for you.
+      She found joy in the simplest things.
 
-        Not a grand surprise,
-        just a little piece of my heart.
-      </p>
+      Her childhood was filled with nature,
+      innocence and the warmth of family.
 
-      <div class="ending">With love, Vaasu ❤️</div>
+      She didn't know what the future had planned
+      for her.
+    </p>
+  </div>
+  <div class="peacock">🦚</div>
+</section>
 
-    </section>
 
+<!-- SCREEN 3: MARRIAGE -->
 
-    <!-- PAGE 2: BEGINNING -->
-    <section class="page">
+<section class="screen">
+  <div class="scene-number">CHAPTER 02 · A NEW JOURNEY</div>
+  <div class="story-card">
+    <div class="story-emoji">🌸💍</div>
+    <h2>A New Chapter In Her Life</h2>
+    <p class="content">
+      As time passed, she turned fifteen.
 
-      <div class="kicker">Chapter 01</div>
+      At such a young age, her life took
+      a completely new direction.
 
-      <div class="big-emoji">🍾</div>
+      She married a young, handsome man,
+      an intelligent person who had built
+      his life through his own hard work.
 
-      <h2>Where It All Began</h2>
+      The first few days after their marriage
+      were beautiful.
 
-      <p class="content">
-        Who would have thought that
-        a random meeting on Bottled
-        would bring two strangers
-        into each other's little world?
+      Soon, he had to leave for work,
+      while she stayed back at home.
 
-        From Bottled to Instagram...
+      A year later, he returned for her,
+      and together they travelled to Mumbai
+      for some time.
 
-        From strangers to conversations...
+      Eventually, their journey brought them
+      back to Hyderabad.
 
-        From conversations to calls...
+      A new place, a new life,
+      and many dreams still waiting to unfold.
+    </p>
+  </div>
+  <div class="flute">🪈</div>
+</section>
 
-        And slowly, without planning anything,
-        we started creating our own little memories.
 
-        Funny how life works, isn't it?
-      </p>
+<!-- SCREEN 4: MOTHER'S PRAYERS -->
 
-      <div class="divider"></div>
+<section class="screen">
+  <div class="scene-number">CHAPTER 03 · A MOTHER'S HEART</div>
+  <div class="story-card">
+    <div class="story-emoji">🙏🦚</div>
+    <h2>Her Faith Never Faded</h2>
+    <p class="content">
+      As the years passed, she longed to become
+      a mother.
 
-      <p class="highlight">
-        Some beautiful things begin unexpectedly.
-      </p>
+      Sometimes, the words of people around her
+      hurt deeply.
 
-    </section>
+      Her aunt would scold her about not having
+      a child, and there were moments when
+      she quietly cried behind closed doors.
 
+      But she never stopped praying.
 
-    <!-- PAGE 3: OUR LITTLE NAMES -->
-    <section class="page">
+      Since childhood, she had been deeply devoted
+      to Lord Krishna.
+
+      No matter how difficult a day had been,
+      she would make time for her daily pooja.
+
+      Her circumstances changed,
+      but her faith never did.
+
+      Every day, she placed her hopes,
+      her tears and her dreams
+      at Krishna's feet.
+
+      And she continued to believe.
+    </p>
+  </div>
+  <div class="quote">
+    "A prayer spoken in silence
+    is never small in the eyes of faith."
+  </div>
+</section>
+
+
+<!-- SCREEN 5: FIRST CHILD -->
 
-      <div class="kicker">Chapter 02</div>
+<section class="screen">
+  <div class="scene-number">CHAPTER 04 · A BEAUTIFUL BLESSING</div>
+  <div class="story-card">
+    <div class="story-emoji">👶❤️</div>
+    <h2>Her First Little Miracle</h2>
+    <p class="content">
+      And one day, her prayers were answered.
 
-      <div class="big-emoji">👽 🌍</div>
+      At around twenty years of age,
+      she was blessed with her first child.
+
+      A beautiful little baby boy arrived
+      in their lives.
+
+      He was fair, cute and adorable.
 
-      <h2>My Alien & My Earthling</h2>
+      The happiness of becoming parents
+      filled their hearts.
 
-      <p class="content">
-        You became my Earthling,
-        and I became your Alien.
+      They loved their little one
+      with all the affection they had.
+
+      Their home was now filled with
+      a new kind of happiness.
+
+      Sleepless nights, little cries,
+      tiny smiles and endless love...
 
-        Almost seven calls,
-        countless conversations,
-        little teasing moments,
-        smiles and blushing...
+      A whole new world had begun.
+    </p>
+  </div>
+  <div class="peacock">🦚</div>
+</section>
 
-        And yes, you know exactly
-        how to make me shy!
 
-        I don't know when it happened,
-        but I started looking forward
-        to talking with you.
+<!-- SCREEN 6: KRISHNA'S THOUGHT -->
 
-        Even the name Vaasu sounds
-        a little more special when you say it.
-      </p>
+<section class="screen">
+  <div class="scene-number">CHAPTER 05 · A DIVINE THOUGHT</div>
+  <div class="story-card">
+    <div class="story-emoji">🦚🪈</div>
+    <h2>A Mother's Love And Krishna's Grace</h2>
+    <p class="content">
+      In the years that followed,
+      the parents faced many sleepless nights
+      while raising their little one.
 
-      <div class="ending">Alien & Earthling ✨</div>
+      The mother sometimes became anxious
+      and worried about her child.
 
-    </section>
+      And in the quiet moments of her devotion,
+      she continued to seek Krishna's blessings.
 
+      In the beautiful way she imagined her faith,
+      it was as though Lord Krishna looked upon
+      his devotee and understood her heart.
+
+      Perhaps he wanted to bless her once more...
 
-    <!-- PAGE 4: FIVE DAYS -->
-    <section class="page">
+      With a little soul who would grow up
+      to love her deeply,
+      care for her,
+      and bring her happiness.
 
-      <div class="kicker">Chapter 03</div>
+      And once again, life began to unfold
+      a beautiful new chapter.
 
-      <div class="big-emoji">📱❤️</div>
+      She became pregnant.
+    </p>
+  </div>
+  <div class="quote">
+    "Some blessings arrive as answers
+    to prayers we never stopped believing in."
+  </div>
+  </section>
+  
+<!-- SCREEN 7: SEASON -->
 
-      <h2>Those Five Days</h2>
+<section class="screen">
+  <div class="scene-number">CHAPTER 06 · NATURE'S WHISPER</div>
+  <div class="story-card">
+    <div class="story-emoji">🍃🌼</div>
+    <h2>When Nature Was Waiting</h2>
+    <p class="content">
+      The days passed.
 
-      <p class="content">
-        A few days ago, my phone broke
-        and suddenly our conversations stopped.
+      Karthika Masam had come to an end,
+      and Mrigashira Masam was about to begin.
 
-        I didn't expect to miss those
-        little everyday moments so much.
+      A gentle winter breeze travelled
+      through the surroundings.
 
-        And knowing that you felt sad
-        and missed me too...
+      The world seemed to slow down.
 
-        That genuinely meant something to me.
+      The trees stood quietly,
+      the fields rested beneath the morning sky,
+      and nature seemed to be waiting
+      for something beautiful.
 
-        Today, when we finally talked again,
-        hearing you and getting teased by you
-        made my day better.
+      When everything around lies in silence,
+      new leaves begin to sprout from every tree.
 
-        I'm glad we're talking again, Mira.
-      </p>
+      Every flower waits for the warmth of the sun,
+      longing for the moment
+      when its buds finally bloom.
+
+      And somewhere, a little life
+      was preparing to enter this world.
+    </p>
+  </div>
+  <div class="peacock">🦚</div>
+</section>
+
+
+<!-- SCREEN 8: BIRTH -->
+
+<section class="screen">
+  <div class="scene-number">CHAPTER 07 · THE MAGICAL MORNING</div>
+  <div class="story-card">
+    <div class="story-emoji">🌑✨</div>
+    <h2>November 27 · 4:00 AM</h2>
+    <p class="content">
+      And then came that beautiful morning.
+
+      It was the 27th of November.
 
-      <div class="highlight">
-        Sometimes, absence makes little things feel special.
-      </div>
+      The clock was approaching four in the morning.
 
-    </section>
+      The sky was wrapped in darkness,
+      and the Sun and Moon stood together
+      in the quietness of the new-moon phase.
 
+      The world was still asleep.
 
-    <!-- PAGE 5: MOON -->
-    <section class="page">
+      The cool breeze moved gently,
+      while a new chapter was about to begin
+      inside a mother's life.
 
-      <div class="kicker">Chapter 04</div>
+      And then...
 
-      <div class="big-emoji">🌙</div>
+      A little baby boy was born.
 
-      <h2>My 2–3 AM Thoughts</h2>
+      A new soul had arrived.
+      A new smile had entered the family.
+      A new story had begun.
 
-      <p class="content">
-        These past few nights,
-        sometimes around 2 or 3 AM,
-        I found myself looking at the moon.
+      A little boy with a slightly dusky complexion,
+      an adorable face,
+      and two beautiful dimples.
+    </p>
+  </div>
+  <div class="quote">
+    "While the world slept,
+    a mother's world became brighter."
+  </div>
+</section>
 
-        The world was quiet,
-        everything was still...
 
-        But somehow, my thoughts
-        kept finding their way to you.
+<!-- SCREEN 9: GROWING UP -->
 
-        I don't know why the moon
-        reminded me of you.
+<section class="screen">
+  <div class="scene-number">CHAPTER 08 · LITTLE MISCHIEF</div>
+  <div class="story-card">
+    <div class="story-emoji">👦🌸</div>
+    <h2>A Little Stubborn, A Lot Of Love</h2>
+    <p class="content">
+      As he slowly grew up,
+      his little personality began to shine.
 
-        Maybe because even from a distance,
-        some people can make a quiet night
-        feel a little warmer.
+      He liked doing things by himself.
 
-        I wished I could share that moment
-        with you sometimes.
-      </p>
+      He could be a little stubborn sometimes,
+      but he was equally lovely.
 
-      <div class="ending">Under the same moon 🌙</div>
+      Those tiny dimples,
+      his innocent face,
+      his little mischief
+      and his own ways of expressing love...
 
-    </section>
+      Slowly, he became a beautiful part
+      of his family's everyday life.
 
+      A little boy with his own dreams,
+      thoughts and imagination.
 
-    <!-- PAGE 6: FAVOURITES -->
-    <section class="page">
+      And his mother had a special name for him.
+    </p>
+  </div>
+  <div class="peacock">🦚</div>
+</section>
 
-      <div class="kicker">Chapter 05</div>
 
-      <h2>Your Little Favourites 🌼</h2>
+<!-- SCREEN 10: NAME REVEAL -->
 
-      <div class="food-card">
-        <div class="small-emoji">🌼</div>
-        <h3>Daisies</h3>
-        <p>
-          Your favourite flowers.
+<section class="screen">
+  <div class="scene-number">CHAPTER 09 · THE NAME</div>
+  <div class="story-card">
+    <div class="story-emoji">🪈🙏</div>
+    <h2>And She Named Him...</h2>
+    <div class="gold-line"></div>
+    <h1 class="script" style="font-size:76px">
+      VAASU
+    </h1>
+    <div class="gold-line"></div>
+    <p class="content">
+      A little name,
+      carrying a beautiful story.
 
-          Simple, beautiful and lovely.
-          Just a little reminder that
-          I remember the small things about you.
-        </p>
-      </div>
+      A mother's journey.
+      A mother's faith.
+      A mother's prayers.
+      And a little boy who arrived
+      on a quiet November morning.
 
-      <div class="food-card">
-        <div class="small-emoji">🍫</div>
-        <h3>Dark Chocolate</h3>
-        <p>
-          A little sweetness for my Earthling.
+      Perhaps he will never completely know
+      how much his arrival meant to her.
 
-          One day, I'm bringing you
-          your favourite dark chocolates.
-        </p>
-      </div>
+      But this is the story behind his birthday.
 
-      <div class="food-card">
-        <div class="small-emoji">🥘</div>
-        <h3>Pav Bhaji</h3>
-        <p>
-          Your favourite food!
+      This is the story of Vaasu.
+    </p>
+  </div>
+</section>
 
-          I still remember saying
-          that I'll make Pav Bhaji for you.
 
-          One day, you'll have to taste it
-          and give your honest review.
-          No cheating! 😄
-        </p>
-      </div>
+<!-- SCREEN 11: BIRTHDAY ENDING -->
 
-    </section>
+<section class="screen">
+  <div class="kicker">A New Chapter Begins</div>
+  <div class="peacock">🦚</div>
 
+  <h1 class="script">Happy Birthday, Vaasu!</h1>
 
-    <!-- PAGE 7: BEAUTY AND HUGS -->
-    <section class="page">
+  <div class="flute">🪈</div>
 
-      <div class="kicker">Chapter 06</div>
+  <p class="content">
+    Today is not just another birthday.
 
-      <div class="big-emoji">🫂</div>
+    It is a reminder of a mother's love,
+    a family's happiness,
+    and the faith that carried her through life.
 
-      <h2>A Hug For My Earthling</h2>
+    May Lord Krishna guide your path,
+    fill your heart with kindness,
+    give you the strength to face every challenge,
+    and always keep you connected
+    to the people who love you.
 
-      <p class="content">
-        You know how you always ask
-        your Alien for hugs?
+    May your journey be filled with
+    beautiful moments, meaningful memories
+    and endless blessings.
+  </p>
 
-        If I could, I'd give you one
-        whenever you needed it.
+  <div class="gold-line"></div>
 
-        And one more thing...
+  <div class="end-title">
+    With Krishna's Blessings...
+  </div>
 
-        Please don't be so hard on yourself
-        about how you look.
+  <h2 style="font-size:30px">
+    Yours, Vaasu ❤️
+  </h2>
 
-        You don't need to change anything
-        to deserve kindness or affection.
+  <p class="content">
+    Born on 27 November · 4:00 AM
+  </p>
 
-        You're beautiful in your own way,
-        and I hope you see yourself
-        with a little more love.
+  <div class="peacock">🌸 🦚 🌸</div>
 
-        Sending you the warmest hug.
-      </p>
+  <button class="main-btn" onclick="goToPage(0)">
+    Read The Story Again ↺
+  </button>
+</section>
 
-      <div class="ending">A thousand hugs 🫂❤️</div>
+</main>
 
-    </section>
 
+<!-- NAVIGATION -->
 
-    <!-- PAGE 8: SUPPORT -->
-    <section class="page">
+<div class="progress">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
 
-      <div class="kicker">Chapter 07</div>
+<div class="counter" id="counter"
+     style="text-align:center;position:relative;z-index:3">
+  01 / 11
+</div>
 
-      <div class="big-emoji">❤️‍🩹</div>
+<nav class="nav">
+  <button id="prevBtn" onclick="changePage(-1)">
+    ← Previous
+  </button>
 
-      <h2>On Your Low Days</h2>
-
-      <p class="content">
-        I know work can get tiring
-        and sometimes life feels heavy.
-
-        But you don't always have to
-        pretend that everything is okay.
-
-        You can share your thoughts,
-        complain about your day,
-        stay quiet or simply be yourself.
-
-        Don't think too much about
-        having to find the right words.
-
-        Whenever you feel like talking,
-        I'll be happy to listen.
-
-        I may not have answers to everything,
-        but I genuinely want to be there for you.
-
-        You don't have to face every
-        difficult moment feeling alone.
-      </p>
-
-      <div class="highlight">
-        You have a special place in my little world.
-      </div>
-
-    </section>
-
-
-    <!-- PAGE 9: GO WITH FLOW -->
-    <section class="page">
-
-      <div class="kicker">Chapter 08</div>
-
-      <div class="big-emoji">✨♾️</div>
-
-      <h2>Let's Go With The Flow</h2>
-
-      <p class="content">
-        Mira...
-
-        I don't want us to question
-        every little thing or rush
-        to find answers for everything.
-
-        There is still a long way to go.
-
-        Let's keep knowing each other,
-        creating memories,
-        laughing, teasing,
-        understanding and growing.
-
-        Let's not put unnecessary pressure
-        on something that feels beautiful.
-
-        Let's trust the journey
-        and see where God and the universe
-        take us.
-
-        One little step at a time,
-        together, if life allows us.
-      </p>
-
-      <div class="ending">
-        No rush. Just us, enjoying the journey. ❤️
-      </div>
-
-    </section>
-
-
-    <!-- PAGE 10: SONG AND NUMBER -->
-    <section class="page">
-
-      <div class="kicker">One Last Surprise</div>
-
-      <div class="big-emoji">🎶</div>
-
-      <h2>A Song & A Little Invitation</h2>
-
-      <p class="content">
-        Two songs for this little moment.
-
-        Sun Ri Sakhi...
-        and your favourite Chashni.
-
-        I hope they make you smile.
-      </p>
-
-      <a class="song-btn"
-         href="https://www.youtube.com/results?search_query=Sun+Ri+Sakhi"
-         target="_blank"
-         rel="noopener">
-         🎵 Sun Ri Sakhi
-      </a>
-
-      <a class="song-btn"
-         href="https://www.youtube.com/results?search_query=Chashni+Bharat+song"
-         target="_blank"
-         rel="noopener">
-         ❤️ Chashni
-      </a>
-
-      <div class="divider"></div>
-
-      <p class="content">
-        We've talked on Bottled,
-        Instagram and calls.
-
-        Here's another way to reach your Alien.
-      </p>
-
-      <button class="nav-btn primary"
-              onclick="revealPhone()">
-        Open Your Last Surprise 💌
-      </button>
-
-      <div class="phone-reveal" id="phoneReveal">
-
-        <p class="highlight">Your Alien's number ❤️</p>
-
-        <h3>9951921998</h3>
-
-        <button class="nav-btn"
-                onclick="copyPhone()">
-          Copy Number 📋
-        </button>
-
-        <br>
-
-        <a class="song-btn"
-           href="https://wa.me/919951921998"
-           target="_blank"
-           rel="noopener">
-           Say Hello on WhatsApp 💬
-        </a>
-
-        <p class="content" style="margin-top:15px">
-          No pressure, Mira.
-          Just one more way to stay connected.
-        </p>
-
-      </div>
-
-      <div class="ending">
-        Your Alien, Vaasu 👽
-      </div>
-
-      <div class="small-emoji">🌙 🌼 ❤️</div>
-
-    </section>
-
-  </main>
-
-
-  <!-- PAGE DOTS -->
-  <div class="dots" id="dots"></div>
-
-
-  <!-- NAVIGATION -->
-  <nav class="navigation">
-
-    <button class="nav-btn"
-            id="prevBtn"
-            onclick="changePage(-1)">
-      ← Previous
-    </button>
-
-    <button class="nav-btn primary"
-            id="nextBtn"
-            onclick="changePage(1)">
-      Begin Our Story →
-    </button>
-
-  </nav>
+  <button id="nextBtn" class="primary"
+          onclick="changePage(1)">
+    Next Chapter →
+  </button>
+</nav>
 
 </div>
 
 
 <script>
 
-let currentPage = 0;
+const screens = document.querySelectorAll(".screen");
 
-const pages = document.querySelectorAll(".page");
-const totalPages = pages.length;
+const total = screens.length;
 
-const pageCount = document.getElementById("pageCount");
-const progressFill = document.getElementById("progressFill");
+let current = 0;
+
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const dotsContainer = document.getElementById("dots");
 
+const progress = document.getElementById("progressFill");
+const counter = document.getElementById("counter");
 
-// CREATE PAGE DOTS
-
-for (let i = 0; i < totalPages; i++) {
-
-  const dot = document.createElement("button");
-
-  dot.className = "dot";
-
-  dot.setAttribute("aria-label", "Go to page " + (i + 1));
-
-  dot.onclick = function() {
-    goToPage(i);
-  };
-
-  dotsContainer.appendChild(dot);
-
+function beginStory() {
+  goToPage(1);
 }
 
+function goToPage(index) {
 
-// SHOW PAGE
+  if (index < 0 || index >= total) return;
 
-function showPage() {
+  current = index;
 
-  pages.forEach((page, index) => {
-
-    page.classList.toggle(
-      "active",
-      index === currentPage
-    );
-
+  screens.forEach((screen, i) => {
+    screen.classList.toggle("active", i === current);
   });
 
-  const dots = document.querySelectorAll(".dot");
+  const percentage =
+    ((current + 1) / total) * 100;
 
-  dots.forEach((dot, index) => {
+  progress.style.width = percentage + "%";
 
-    dot.classList.toggle(
-      "active",
-      index === currentPage
-    );
-
-  });
-
-  pageCount.textContent =
-    String(currentPage + 1).padStart(2, "0")
+  counter.textContent =
+    String(current + 1).padStart(2, "0")
     + " / "
-    + String(totalPages).padStart(2, "0");
+    + String(total).padStart(2, "0");
 
-  progressFill.style.width =
-    ((currentPage + 1) / totalPages * 100) + "%";
+  prevBtn.style.display =
+    current === 0 ? "none" : "inline-block";
 
-  prevBtn.disabled = currentPage === 0;
+  nextBtn.style.display =
+    current === 0 || current === total - 1
+    ? "none"
+    : "inline-block";
 
-  if (currentPage === 0) {
-    nextBtn.textContent = "Begin Our Story →";
-  } else if (currentPage === totalPages - 1) {
-    nextBtn.textContent = "Our Little Journey ❤️";
-  } else {
-    nextBtn.textContent = "Next Page →";
-  }
+  nextBtn.textContent =
+    current === total - 2
+    ? "Finish The Story ❤️"
+    : "Next Chapter →";
 
   window.scrollTo({
     top: 0,
@@ -878,87 +971,13 @@ function showPage() {
 
 }
 
-
-// NEXT AND PREVIOUS
-
 function changePage(direction) {
-
-  const next = currentPage + direction;
-
-  if (next < 0 || next >= totalPages) {
-    return;
-  }
-
-  currentPage = next;
-
-  showPage();
-
+  goToPage(current + direction);
 }
 
-
-// DIRECT PAGE NAVIGATION
-
-function goToPage(index) {
-
-  if (index < 0 || index >= totalPages) {
-    return;
-  }
-
-  currentPage = index;
-
-  showPage();
-
-}
-
-
-// PHONE NUMBER REVEAL
-
-function revealPhone() {
-
-  const phone =
-    document.getElementById("phoneReveal");
-
-  phone.classList.add("show");
-
-  phone.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
-}
-
-
-// COPY NUMBER
-
-function copyPhone() {
-
-  const number = "9951921998";
-
-  if (navigator.clipboard && window.isSecureContext) {
-
-    navigator.clipboard.writeText(number)
-      .then(() => {
-        alert("Your Alien's number is copied! ❤️");
-      })
-      .catch(() => {
-        alert("Please copy manually: " + number);
-      });
-
-  } else {
-
-    alert("Please copy manually: " + number);
-
-  }
-
-}
-
-
-// INITIALIZE
-
-showPage();
+goToPage(0);
 
 </script>
 
 </body>
-  </html>
-  
+</html>
